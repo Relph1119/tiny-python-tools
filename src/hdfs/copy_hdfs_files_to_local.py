@@ -15,12 +15,12 @@ if __name__ == '__main__':
     # PROJECT_NAME = 'bdp-python-base-components'
     # root_path = os.path.abspath(os.path.dirname(__file__)).split(PROJECT_NAME)[0]
     # local_path = os.path.join(root_path, PROJECT_NAME, 'test')
-
-    client = pyhdfs.HdfsClient(hosts="10.161.27.67:8020", user_name="nusp")
-    path = "/nusp/fileServiceRoot"
-    for root, dir, files in client.walk(top=path):
-        for file in files:
-            print(root, file)
+    try:
+        client = pyhdfs.HdfsClient(hosts="10.126.18.242:50070", user_name="supergroup")
+        path = "/frc/input"
+        for root, dir, files in client.walk(top=path):
+            for file in files:
+                print(root, dir, file)
     #         full_path = os.path.join(root, file).replace('\\', '/')
     #         local_file_path = os.path.join(local_path, root)
     #         if not os.path.exists(local_file_path):
@@ -34,3 +34,5 @@ if __name__ == '__main__':
     # client.copy_from_local(local_path, path + '/test.txt')
 
     # client.delete(path + '/test.txt')
+    except Exception as e:
+        print(e)
